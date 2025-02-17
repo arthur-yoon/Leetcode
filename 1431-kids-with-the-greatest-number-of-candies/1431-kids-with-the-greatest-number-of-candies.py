@@ -1,19 +1,4 @@
-
 class Solution:
-    def kidsWithCandies(self, candies: List[int], extraCandies: int) -> List[bool]:
-        # 결과값 저장 배열 초기화
-        result = [False] * len(candies)
-        
-        # 최대 캔디를 구하고
+    def kidsWithCandies(self, candies: list[int], extraCandies: int) -> list[bool]:
         max_candies = max(candies)
-
-        # 각 아이에게 추가 캔디를 줄때 최대값 이상인지
-        for i in range(len(candies)):
-            # 추가캔디를 줌
-            max_candies_this_kid = candies[i] + extraCandies
-            
-            # 가장 많은 캔디 이상판단
-            if max_candies_this_kid >= max_candies:
-                result[i] = True
-        # 결과값 반환
-        return result
+        return [candy + extraCandies >= max_candies for candy in candies] # 리스트 컴프리헨션
