@@ -1,15 +1,20 @@
+import kotlin.text. CharCategory
+
 class Solution {
     fun reverseWords(s: String): String {
-        // 의사코드 2. 입력 문자열 s 의 leading/trailing 공백 제거 (trim)
         val trimmedString = s.trim()
+        val wordsList = trimmedString.split(whitespace = true) // 확장 함수 split(whitespace = true) 사용
 
-        // 의사코드 3. 문자열 s 를 공백(whitespace) 기준으로 단어 리스트로 분할 (split, 복수 공백 처리, 빈 문자열 제거)
-        val wordsList = trimmedString.split("\\s+".toRegex()) // 정규표현식 "\\s+" 를 사용하여 공백(whitespace) 기준으로 분할, 복수 공백 처리
+        val reversedWordsList = wordsList.reversed()
+        return reversedWordsList.joinToString(" ")
+    }
+}
 
-        // 의사코드 4. 단어 리스트를 역순으로 정렬 (reverse)
-        val reversedWordsList = wordsList.reversed() // 컬렉션 기능 활용: reversed
-
-        // 의사코드 5. 역순으로 정렬된 단어 리스트를 단일 공백으로 연결하여 문자열 생성 (joinToString)
-        return reversedWordsList.joinToString(" ") // 컬렉션 기능 활용: joinToString, 단일 공백 " " 을 구분자로 사용
+// CharSequence split 확장 함수 (whitespace 옵션 추가)
+fun CharSequence.split(whitespace: Boolean = false): List<String> {
+    return if (whitespace) {
+        this.split("\\s+".toRegex()) // whitespace=true 인 경우, 정규 표현식 사용 (복수 공백, 다양한 whitespace 처리)
+    } else {
+        this.split(" ") // whitespace=false (기본값) 인 경우, 기존 split(" ") 사용 (단일 공백 구분 - 필요에 따라 다른 기본 동작 정의 가능)
     }
 }
