@@ -1,3 +1,4 @@
+// sol_1 : 성능우선
 // class Solution {
 //     fun uniqueOccurrences(arr: IntArray): Boolean {
 //         val valueOccurrencesMap = HashMap<Int, Int>()
@@ -17,10 +18,10 @@
 //     }
 // }
 
+// sol_2 : 코틀린스럽게
 class Solution {
     fun uniqueOccurrences(arr: IntArray): Boolean {
         val frequencyMap = arr.toList().groupingBy { it }.eachCount()
-
         val frequencySet = HashSet<Int>(frequencyMap.values)
         return frequencySet.size == frequencyMap.size
     }
