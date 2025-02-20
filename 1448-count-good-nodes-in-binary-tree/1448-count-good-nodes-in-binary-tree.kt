@@ -26,16 +26,11 @@ class Solution {
                 }
             }
         }
-
         root?.let {
             getGoodNodeCount(it, it.`val`)
         }
         return goodNodeCount
     }
 
-    private fun TreeNode.isGoodNode(maxValueOfPath: Int): Boolean {
-        return this.`val` >= maxValueOfPath
-    }
-
-
+    private fun TreeNode.isGoodNode(maxValueOfPath: Int) = this.`val` >= maxValueOfPath
 }
