@@ -27,10 +27,9 @@ class Solution {
 
             for (neighbor in neighbors.entries) {
                 val neighborVar = neighbor.key
-                val weight = neighbor.value
                 if (!visited.contains(neighborVar)) {
                     visited.add(neighborVar)
-                    queue.addLast(RatioInfo(neighborVar, currentRatio * weight))
+                    queue.addLast(RatioInfo(neighborVar, currentRatio * neighbor.value))
                 }
             }
         }
