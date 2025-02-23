@@ -8,8 +8,8 @@ class Solution {
                 result.add(current)
                 return
             }
-
-            for (letter in map.getValue(digits[i])) {
+            val mappedLetters = map.getValue(digits[i]) ?: ""
+            for (letter in mappedLetters) {
                 dfs(i + 1, current + letter)
             }
         }
@@ -27,5 +27,5 @@ val map = mapOf(
         '6' to "mno",
         '7' to "pqrs",
         '8' to "tuv",
-        '9' to "wxyz",
+        '9' to "wxyz"
 )
